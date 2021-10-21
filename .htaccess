@@ -1,6 +1,7 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RedirectMatch 404 /\.git
 RewriteRule ^p/(.*)$ /asserts/pictures/$1 [NC,L]
 RewriteRule ^css/(.*)$ /asserts/css/$1 [NC,L]
 RewriteRule ^js/(.*)$ /asserts/js/$1 [NC,L]
