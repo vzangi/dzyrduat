@@ -166,7 +166,8 @@ class Word
 	}
 	
 	/* Изменение слова в базе */
-	public function chageWord($item, $r_translates, $r_words, $r_examples) {
+	public function chageWord($item, $r_translates, $r_words, $r_examples) 
+	{
 		$query = "UPDATE nyhas SET 
 					word = '{$item['word']}',
 					translit = '{$item['translit']}',
@@ -250,6 +251,34 @@ class Word
 		return 'ok';
 	}
 	
+	/* Установка картинки слова */
+	public function setWordImage($word_id, $image_file_name) 
+	{
+		if (!$this->validateId($word_id)) {
+			return false;
+		}
+		$query = "UPDATE nyhas SET 
+					image = '{$image_file_name}',
+					dt_change = CURRENT_TIMESTAMP
+				  WHERE id = {$word_id}";
+		$this->db->query($query);
+		return true;
+	}
+	
+	/* Установка озвучки слова */
+	public function setWordSound($word_id, $sound_file_name) 
+	{
+		if (!$this->validateId($word_id)) {
+			return false;
+		}
+		$query = "UPDATE nyhas SET 
+					sound = '{$sound_file_name}',
+					dt_change = CURRENT_TIMESTAMP
+				  WHERE id = {$word_id}";
+		$this->db->query($query);
+		return true;
+	}
+	
 	/* Пересчитывает номера страниц для слов */
 	protected function updatePageNumbers() {
 		$query = "UPDATE nyhas
@@ -267,5 +296,11 @@ class Word
 			return false;
 		}
 		return true;
+	}
+	
+	/* Валидация id (число) */
+	protected function validateId($id) 
+	{
+		return is_numeric($id);
 	}
 }

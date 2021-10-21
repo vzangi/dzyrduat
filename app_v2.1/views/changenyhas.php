@@ -29,7 +29,7 @@
 		cursor: pointer;
 	}
 	.input-lg+.form-control-feedback {
-		width: 60px;
+		width: 33px;
 		top: 6px;
 		right: 6px;
 		line-height: 22px;
@@ -70,7 +70,7 @@
 		display: block;
 	}
 	.w_mover {
-		width: 227px;
+		width: 105px;
 		z-index: 22;
 		pointer-events: all;
 		top: 5px;
@@ -87,7 +87,7 @@
 		display: none;
 	}
 	input.form-control.input-lg {
-		padding-right: 236px;
+		padding-right: 110px;
 	}
 	.translates-removed, .translate-box-removed, .example-box-removed {
 		display: none;
@@ -155,7 +155,7 @@
 					$sort += 10;
 					?>
 					<div class='translate' data-id='<?=$translate['id']?>' data-sort='<?=$sort?>'>
-						<img src="/p/remove.png" class="remove-translate" title='Тӕлмац айсын'>
+						<img src="/p/remove.png" class="remove-translate" title='Тӕлмац x'>
 						<label>Тӕлмац</label>
 						<div class='translate-box-removed'></div>
 						<div class='translate-box'>
@@ -163,10 +163,10 @@
 							<div class="form-group" style='position:relative;'>
 								<input type="text" class="form-control input-lg translate-item" placeholder="Тӕлмац"
 									value='<?=$words['translate']?>' data-id='<?=$words['id']?>' data-sort='<?=$words['sort']?>'>
-								<span class="form-control-feedback btn btn-sm btn-danger remove-translate">айсын</span>
+								<span class="form-control-feedback btn btn-sm btn-danger remove-translate" title='Айсын'>x</span>
 								<div class='form-control-feedback w_mover'>
-									<a class="btn btn-sm btn-warning move-up">Уӕлӕмӕ</a>
-									<a class="btn btn-sm btn-warning move-down">Дӕлӕмӕ</a>
+									<a class="btn btn-sm btn-warning move-up" title='Уӕлӕмӕ'>/\</a>
+									<a class="btn btn-sm btn-warning move-down" title='Дӕлӕмӕ'>\/</a>
 								</div>
 							</div>
 						<? } ?>
@@ -182,10 +182,10 @@
 									<div class="input-group-addon">ӕ</div>
 									<input type="text" class="form-control input-lg example" placeholder="Дӕнцӕг"
 										value='<?=$example['example']?>' data-id='<?=$example['id']?>' data-sort='<?=$example['sort']?>'>
-									<span class="form-control-feedback btn btn-sm btn-danger remove-example">айсын</span>
+									<span class="form-control-feedback btn btn-sm btn-danger remove-example" title='Айсын'>x</span>
 									<div class='form-control-feedback w_mover'>
-										<a class="btn btn-sm btn-warning move-up">Уӕлӕмӕ</a>
-										<a class="btn btn-sm btn-warning move-down">Дӕлӕмӕ</a>
+										<a class="btn btn-sm btn-warning move-up" title='Уӕлӕмӕ'>/\</a>
+										<a class="btn btn-sm btn-warning move-down" title='Дӕлӕмӕ'>\/</a>
 									</div>
 								</div>
 							</div>
@@ -195,8 +195,8 @@
 						<br>
 						<br>
 						<div class='t_mover'>
-							<button class='btn btn-warning move-up'>Уӕлӕмӕ</button>
-							<button class='btn btn-warning move-down'>Дӕлӕмӕ</button>
+							<button class='btn btn-warning move-up' title='Уӕлӕмӕ'>/\</button>
+							<button class='btn btn-warning move-down' title='Дӕлӕмӕ'>\/</button>
 						</div>
 					</div>
 					<?
@@ -432,16 +432,16 @@
 	
 	<script id="transTmpl" type="text/x-jquery-tmpl">
 		<div class='translate' data-new='1'>
-			<img src="/p/remove.png" class="remove-translate" title='Тӕлмац айсын'>
+			<img src="/p/remove.png" class="remove-translate" title='Тӕлмац x'>
 			<label>Тӕлмац</label>
 			<div class='translate-box-removed'></div>
 			<div class='translate-box'>
 				<div class="form-group"  style='position:relative;'>
 					<input type="text" class="form-control input-lg translate-item" placeholder="Тӕлмац" data-new='1'>
-					<span class="form-control-feedback btn btn-sm btn-danger remove-translate">айсын</span>
+					<span class="form-control-feedback btn btn-sm btn-danger remove-translate" title='Айсын'>x</span>
 					<div class='form-control-feedback w_mover'>
-						<a class="btn btn-sm btn-warning move-up">Уӕлӕмӕ</a>
-						<a class="btn btn-sm btn-warning move-down">Дӕлӕмӕ</a>
+						<a class="btn btn-sm btn-warning move-up" title='Уӕлӕмӕ'>/\</a>
+						<a class="btn btn-sm btn-warning move-down" title='Дӕлӕмӕ'>\/</a>
 					</div>
 				</div>
 			</div>
@@ -455,8 +455,8 @@
 			<br>
 			<br>
 			<div class='t_mover'>
-				<button class='btn btn-warning move-up'>Уӕлӕмӕ</button>
-				<button class='btn btn-warning move-down'>Дӕлӕмӕ</button>
+				<button class='btn btn-warning move-up' title='Уӕлӕмӕ'>/\</button>
+				<button class='btn btn-warning move-down' title='Дӕлӕмӕ'>\/</button>
 			</div>
 		</div>
 	</script>
@@ -464,10 +464,10 @@
 	<script id="transItemTmpl" type="text/x-jquery-tmpl">
 		<div class="form-group" style='position:relative;'>
 			<input type="text" class="form-control input-lg translate-item" placeholder="Тӕлмац" data-new='1'>
-			<span class="form-control-feedback btn btn-sm btn-danger remove-translate">айсын</span>
+			<span class="form-control-feedback btn btn-sm btn-danger remove-translate" title='Айсын'>x</span>
 			<div class='form-control-feedback w_mover'>
-				<a class="btn btn-sm btn-warning move-up">Уӕлӕмӕ</a>
-				<a class="btn btn-sm btn-warning move-down">Дӕлӕмӕ</a>
+				<a class="btn btn-sm btn-warning move-up" title='Уӕлӕмӕ'>/\</a>
+				<a class="btn btn-sm btn-warning move-down" title='Дӕлӕмӕ'>\/</a>
 			</div>
 		</div>
 	</script>
@@ -477,10 +477,10 @@
 			<div class="input-group">
 				<div class="input-group-addon">ӕ</div>
 				<input type="text" class="form-control input-lg example" placeholder="Дӕнцӕг" data-new='1'>
-				<span class="form-control-feedback btn btn-sm btn-danger remove-example">айсын</span>
+				<span class="form-control-feedback btn btn-sm btn-danger remove-example" title='Айсын'>x</span>
 				<div class='form-control-feedback w_mover'>
-					<a class="btn btn-sm btn-warning move-up">Уӕлӕмӕ</a>
-					<a class="btn btn-sm btn-warning move-down">Дӕлӕмӕ</a>
+					<a class="btn btn-sm btn-warning move-up" title='Уӕлӕмӕ'>/\</a>
+					<a class="btn btn-sm btn-warning move-down" title='Дӕлӕмӕ'>\/</a>
 				</div>
 			</div>
 		</div>

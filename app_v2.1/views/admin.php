@@ -35,11 +35,7 @@
 	</style>
   </head>
 
-  <body <?
-	if ($user['role'] == 0) {
-		echo "data-role='admin'";
-	}
-  ?>>
+  <body data-role='<?=$user['role']?>'>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -108,13 +104,18 @@
 						if (word['translate']) {
 							text += ' - ' + word['translate']
 						}
-						$("<tr><td>" + text + "</td></tr>").appendTo('table.table')
+						var btns = "";
+						if ($('body').data().role == 0) {
+							btns = "<td width='50'><a href='/admin/changeImage/" + word['word'] +"'>къам</a></td>" +
+									"<td width='50'><a href='/admin/changeSound/" + word['word'] +"'>зӕл</a></td>";
+						}
+						$("<tr><td class='item'>" + text + "</td>" + btns + "</tr>").appendTo('table.table')
 					}
 				}
 			})
 		}, 300)
 	});
-	$("body").on('click', '.table tr', function(){
+	$("body").on('click', '.table .item', function(){
 		var word = $(this).find("b").text();
 		location.href = "/admin/change/" + word;
 	});

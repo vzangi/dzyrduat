@@ -18,7 +18,7 @@ class User
 	public function auth($login, $password) {
 		if ($this->isValid($login) && $this->isValid($password)) {
 			$passHash = md5($password);
-			$query = "SELECT id, name, login FROM users WHERE password = '$passHash' AND login = '$login'";
+			$query = "SELECT id, name, login, role FROM users WHERE password = '$passHash' AND login = '$login'";
 			$user = $this->db->query($query);
 			if (count($user) > 0) {
 				$_SESSION['authorized'] = true;
