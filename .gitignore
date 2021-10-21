@@ -1,3 +1,5 @@
 /app_v2.1/config/config.xml
 /asserts/sounds/*
 /asserts/uploads/*
+!/asserts/sounds/index.php
+!/asserts/uploads/index.php
