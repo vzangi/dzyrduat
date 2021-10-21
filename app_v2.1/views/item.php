@@ -1,5 +1,6 @@
 <div>
 <?php
+//print_r($_SERVER['DOCUMENT_ROOT']);
 function mb_ucfirst($str, $encoding='UTF-8')
 {
 	$str = mb_ereg_replace('^[\ ]+', '', $str);
@@ -9,7 +10,13 @@ function mb_ucfirst($str, $encoding='UTF-8')
 }
 ?><div class='content'>
 		<? if ($item): ?>
-			<h2 <? if ($item['sound'] != ''): ?>class='sounded' data-sound='<?=$item['sound']?>'<? endif ?>><?= $item['word']?></h2>
+			<h2 
+			<? if ($item['sound'] != ''): ?>
+				<? if (file_exists("asserts/sounds/".$item['sound'])): ?>
+					class='sounded' data-sound='<?=$item['sound']?>'
+				<? endif ?>
+			<? endif ?>
+			><?= $item['word']?></h2>
 			
 			<? if ($item['description'] != ''): ?>
 				<p><?=$item['description']?></p>
@@ -57,7 +64,9 @@ function mb_ucfirst($str, $encoding='UTF-8')
 		<? endif ?>
 		
 		<? if ($item['image']): ?>
-		<img class='image' src='/u/<?= $item['image']?>' alt='<?= $item['word']?>' />
+			<? if (file_exists("asserts/uploads/".$item['image'])): ?>
+				<img class='image' src='/u/<?= $item['image']?>' alt='<?= $item['word']?>' />
+			<? endif ?>
 		<? endif ?>
 	</div>
 	<span class='page-number'><?= $item['page']?></span>
