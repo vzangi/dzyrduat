@@ -1,0 +1,4 @@
+<Files "config.xml">
+Order Deny,Allow
+Deny from all
+</Files>

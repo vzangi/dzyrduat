@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^p/(.*)$ /asserts/pictures/$1 [NC,L]
+RewriteRule ^css/(.*)$ /asserts/css/$1 [NC,L]
+RewriteRule ^js/(.*)$ /asserts/js/$1 [NC,L]
+RewriteRule ^s/(.*)$ /asserts/sounds/$1 [NC,L]
+RewriteRule ^u/(.*)$ /asserts/uploads/$1 [NC,L]
+RewriteRule ^favicon\.ico$ /asserts/pictures/favicon.ico [L]
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+AddDefaultCharset UTF-8
