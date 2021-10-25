@@ -81,8 +81,13 @@
 		$(".input-group-addon").click(function(){
 			var input = $(this).next();
 			var text = input.val();
-			text = text + $(this).text();
+			if (text == '') {
+				text = text + $(this).text().toUpperCase();
+			} else {
+				text = text + $(this).text();
+			}
 			input.val(text);
+			$(input).keyup().focus();
 		})
 	})
 	$("button.navbar-toggle").click(function(){

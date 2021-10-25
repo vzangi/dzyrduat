@@ -61,6 +61,7 @@ class Word
 		$limit = Config::getInstance()->get('find_item_count');
 		
 		$query = "SELECT word, page FROM nyhas WHERE word LIKE '{$find}%' ORDER BY page LIMIT 0, $limit";
+		
 		$words = $this->db->query($query);
 		if (count($words) > 0) {
 			return $words;
@@ -75,6 +76,29 @@ class Word
 							 nyhas
 							ON nyhas.id = translates.nyhas_id
 						WHERE translate LIKE '$find%'
+						GROUP BY nyhas.word
+						ORDER BY nyhas.page
+						LIMIT 0, $limit";
+			
+			$words = $this->db->query($query);
+			if (count($words) > 0) {
+				return $words;
+			}
+
+			// Поиск в примерах
+			// идёт по началу слов в примере
+			$query = "SELECT nyhas.word, nyhas.page, translate_words.translate 
+						FROM examples 
+							LEFT JOIN 
+								translates
+							ON translates.id = examples.translate_id
+							LEFT JOIN
+								nyhas
+							ON nyhas.id = translates.nyhas_id
+							LEFT JOIN 
+								translate_words
+							ON translates.id = translate_words.translate_id
+						WHERE example LIKE '% $find%' OR example LIKE '$find%'
 						GROUP BY nyhas.word
 						ORDER BY nyhas.page
 						LIMIT 0, $limit";
