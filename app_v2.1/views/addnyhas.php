@@ -137,7 +137,11 @@
 		$('body').on('click', '.input-group-addon', function(){
 			var input = $(this).next();
 			var text = input.val();
-			text = text + $(this).text();
+			if (text == '') {
+				text = $(this).text().toUpperCase();
+			} else {
+				text = text + $(this).text();
+			}
 			input.val(text);
 			input.keyup();
 			input.focus();
