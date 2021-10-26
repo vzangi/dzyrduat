@@ -137,7 +137,7 @@
 		$('body').on('click', '.input-group-addon', function(){
 			var input = $(this).next();
 			var text = input.val();
-			if (text == '') {
+			if (text == '' && !input.hasClass('example')) {
 				text = $(this).text().toUpperCase();
 			} else {
 				text = text + $(this).text();
