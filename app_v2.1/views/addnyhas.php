@@ -155,15 +155,18 @@
 	})
 	$('.add-trans-block').click(function(){
 		$("#transTmpl").tmpl({}).appendTo('.translates');
+		$(".translates .translate-item:last").focus();
 	})
 	$('body').on('click', '.add-trans-item', function(){
 		$("#transItemTmpl").tmpl({}).insertBefore($(this))
+		$(this).prev().find("input").focus();
 	})
 	$("body").on('click', '.remove-translate', function(){
 		$(this).parent().remove();
 	})
 	$('body').on('click', '.add-example', function(){
 		$("#exampleItemTmpl").tmpl({}).insertBefore($(this))
+		$(this).prev().find("input").focus();
 	})
 	$("body").on('click', '.remove-example', function(){
 		$(this).parent().parent().remove();

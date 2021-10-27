@@ -1,5 +1,5 @@
 body{
-	overflow:hidden;
+	overflow:hidden !important;
 	background-color:#fcfcfc;
 	margin:0;
 	padding:0;

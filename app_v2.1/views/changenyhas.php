@@ -236,9 +236,11 @@
 	})
 	$('.add-trans-block').click(function(){
 		$("#transTmpl").tmpl({}).appendTo('.translates');
+		$(".translates .translate-item:last").focus();
 	})
 	$('body').on('click', '.add-trans-item', function(){
 		$("#transItemTmpl").tmpl({}).appendTo($(this).prev())
+		$(this).prev().find("input:last").focus();
 	})
 	$("body").on('click', '.remove-translate', function(){
 		var trash = $(this).parent().parent().prev();
@@ -246,6 +248,7 @@
 	})
 	$('body').on('click', '.add-example', function(){
 		$("#exampleItemTmpl").tmpl({}).appendTo($(this).prev())
+		$(this).prev().find("input:last").focus();
 	})
 	$("body").on('click', '.remove-example', function(){
 		var trash = $(this).parent().parent().parent().prev();
