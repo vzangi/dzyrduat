@@ -316,7 +316,7 @@ class Word
 	protected function validateFind($find) 
 	{
 		if (strlen($find) > self::FIND_WORD_MAX_LENGTH) return false;
-		if (!preg_match("/^[ӕабвгдеёжзийклмнопрстуфхцчшщъыьэюяÆАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ\s]+$/i", $find)) {
+		if (!preg_match("/^[ӕабвгдеёжзийклмнопрстуфхцчшщъыьэюяÆАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ\s]+[-]{0,1}[ӕабвгдеёжзийклмнопрстуфхцчшщъыьэюяÆАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ\s]*$/i", $find)) {
 			return false;
 		}
 		return true;
