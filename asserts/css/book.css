@@ -302,6 +302,7 @@ body .search-icon {
 .content ol {
 	padding: 20px;
 	margin-top: 0;
+	text-align: justify;
 }
 .content ol li {
 	margin-bottom: 5px;
