@@ -141,6 +141,7 @@
 		$('body').on('click', 'ol li a', function(){
 			var word = $(this).attr('href')
 			goToWord( word )
+			return false;
 		})
 		
 		function goToWord(word) {
