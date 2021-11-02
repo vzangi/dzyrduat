@@ -20,6 +20,12 @@ class Main extends PageController
 		
 		$words = new Word;
 		$data['page_count'] = $words->getCount();
+		
+		$mobileDetector = new Mobile_Detect;
+		if ($mobileDetector->isMobile()) {
+			$this->mainTemplate = 'mobile';
+		}
+		
 		return $this->template($this->mainTemplate, $data);
     }
 }

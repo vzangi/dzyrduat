@@ -1,0 +1,252 @@
+html, body {
+	height: 100%;
+	font-size: 14px;
+	font-family: Tahoma;
+}
+body {
+	margin: 0;
+	background-color: #673936;
+	background-image:url(/p/mobile-bg.jpg);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+    background-size: cover;
+	overflow: hidden;
+}
+body > * {
+	display: none !important;
+}
+audio {
+	display: none !important;
+}
+.transition {
+	transition: all 0.3s ease;
+}
+.wrapper {
+	display: block !important;
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+.finder {
+   position: absolute;
+   z-index: 20;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 35px;
+   padding: 10px;
+}
+.finder-bg {
+	position: relative;
+	background-color: #f1e3b2;
+	border-radius: 20px;
+    padding: 6px 12px;
+	opacity: 0.5;
+}
+#find {
+    display: block;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    margin: 0;
+	background: transparent;
+    letter-spacing: 1px;
+	color: #4e4e4e;
+	font-size: 1.2rem;
+    font-family: inherit;
+	position: relative;
+    top: -1px;
+}
+.find-focused .finder-bg {
+	opacity: 0.9;
+}
+#ae {
+	position: absolute;
+    top: 3px;
+    right: 4px;
+    width: 28px;
+    height: 28px;
+    background: #c39b4a;
+    border-radius: 20px;
+    text-align: center;
+	opacity: 0;
+}
+#ae span {
+	padding-top: 4px;
+    display: block;
+    color: #222;
+}
+.find-focused #ae {
+	opacity: 1;
+}
+.finder-panel {
+	position: absolute;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(40,40,40,0.8);
+	opacity: 0;
+}
+.find-focused .finder-panel {
+	opacity: 1;
+	z-index: 10;
+}
+#firts-layer {
+	position: absolute;
+	z-index: 1;
+	top: 40%;
+	left: 0;
+	right: 0;
+}
+@media screen and (orientation:landscape) {
+	#firts-layer {
+		top: 20%;
+	}	
+}
+#olen {
+	display: block;
+	width: 260px;
+	margin: auto;
+	opacity: 0.9;
+}
+#title {
+	text-align: center;
+    color: #c19a55;
+    text-shadow: 0 0 2px #722010;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 2px;
+	opacity: 0.9;
+}
+
+.finded-words {
+	margin: 0;
+	padding: 55px 23px 0 35px;
+	color: #f1e3b2;
+	opacity: 0.9;
+}
+ul.finded-words li {
+    position: relative;
+    border-bottom: 1px dotted #aba48e;
+    color: #ddbc7e;
+	padding-right: 45px;
+	margin-bottom: 4px;
+}
+ul.finded-words li a {
+	color: #f1e3b2;
+	font-size: 1.2rem;
+}
+ul.finded-words li span {
+    position: absolute;
+    right: 0px;
+    font-size: 1rem;
+    bottom: 1px;
+    color: #f1e3b2;
+}
+
+.viewer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+}
+.viewer .page {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.content {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    z-index: 5;
+    padding: 0 20px;
+    overflow-y: auto;
+	color: #5f5f5f;
+}
+.content h2 {
+	margin: 0;
+	font-size: 2rem;
+}
+h2.sounded:before {
+    content: ' ';
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background-image: url(../p/sound.png);
+    background-position: center center;
+    background-size: cover;
+    margin-right: 6px;
+    opacity: 0.7;
+    position: relative;
+    top: 1px;
+}
+.content ol {
+    padding-left: 16px;
+}
+.content > ol, .content > p {
+	font-size: 1.2rem;
+	text-align: justify;
+} 
+ol li {
+    margin-bottom: 2px;
+    letter-spacing: 0.02rem;
+}
+.content img.image {
+    width: 88%;
+    margin: auto;
+    margin-top: 50px;
+    display: block;
+}
+.content ol li a,
+.footer a {
+    color: #8f662f;
+    text-decoration: none;
+}
+span.page-number {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: block;
+    z-index: 5;
+    width: 100%;
+    text-align: center;
+	color: #5f5f5f;
+}
+.page > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+	width: 100%;
+	height: 100%;
+}
+.footer {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    font-size: 1.2rem;
+    margin-top: 100px;
+}
+.lupa {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+	width: 20px;
+    height: 20px;
+    background-image: url(/p/zoom.png);
+    background-size: cover;
+    background-position: left center;
+    opacity: 0.7;
+}
