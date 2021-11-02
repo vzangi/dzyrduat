@@ -140,6 +140,10 @@
 		
 		$('body').on('click', 'ol li a', function(){
 			var word = $(this).attr('href')
+			goToWord( word )
+		})
+		
+		function goToWord(word) {
 			$.ajax({
 				url: 'find/' + word,
 				async: false,
@@ -150,7 +154,7 @@
 				}
 			})
 			return false
-		})
+		}
 		
 		$('body').on('click', 'h2.sounded', function(){
 			if ($.sounded) return
@@ -223,5 +227,10 @@
 		var zvuk = new Audio('/s/zvuk.mp3')
 		zvuk.volume = 0.2
 		$('body').append(zvuk)
+		
+		var finded = $("#finded");
+		if (finded.length != 0) {
+			goToWord( finded.val() )
+		}
 	})
 })(jQuery)

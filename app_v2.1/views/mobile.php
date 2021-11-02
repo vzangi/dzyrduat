@@ -36,6 +36,9 @@
 	<script type="text/javascript" src="/js/extras/jquery.min.1.7.js"></script>
 </head>
 	<body>
+		<? if (isset($finded)): ?>
+			<input type='hidden' id='finded' value="<?=$finded['word']?>" />
+		<? endif ?>
 		<div class='wrapper'>
 			<div class='finder'>
 				<div class='finder-bg'>
