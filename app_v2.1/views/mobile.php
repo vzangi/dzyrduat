@@ -31,7 +31,7 @@
 	<? endif ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="stylesheet" href="/css/book-mobile.css" />
+	<link rel="stylesheet" href="/css/book-mobile.css?v=2.1" />
 	<meta name="theme-color" content="#704f26" />
 	<script type="text/javascript" src="/js/extras/jquery.min.1.7.js"></script>
 </head>

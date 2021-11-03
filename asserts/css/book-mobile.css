@@ -201,6 +201,7 @@ ol li {
     margin: auto;
     margin-top: 50px;
     display: block;
+	opacity: 0.5;
 }
 .content ol li a,
 .footer a {
