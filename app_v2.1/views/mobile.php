@@ -31,7 +31,7 @@
 	<? endif ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="stylesheet" href="/css/book-mobile.css?v=2.1" />
+	<link rel="stylesheet" href="/css/book-mobile.css?v=2.2" />
 	<meta name="theme-color" content="#704f26" />
 	<script type="text/javascript" src="/js/extras/jquery.min.1.7.js"></script>
 </head>
@@ -56,6 +56,6 @@
 			</div>
 			<div id='pages' style='display:none;' data-current_page='0' data-page_count='<?=$page_count + $page_count % 2?>'></div>
 		</div>
-		<script src='/js/book-mobile.js'></script>
+		<script src='/js/book-mobile.js?v=2.2'></script>
 	</body>
 </html>

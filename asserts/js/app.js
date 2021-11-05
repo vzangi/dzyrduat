@@ -338,7 +338,7 @@ $('body').on('click', 'h2.sounded', function(){
 	sound.addEventListener('pause', function(e){
 		$.sounded = false
 	})
-	sound.volume = 0.7
+	sound.volume = 0.9
 	playSound(sound)
 })
 

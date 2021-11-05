@@ -187,9 +187,9 @@
 			startY,
 			distX,
 			distY,
-			threshold = 150, //required min distance traveled to be considered swipe
-			restraint = 100, // maximum distance allowed at the same time in perpendicular direction
-			allowedTime = 300, // maximum time allowed to travel that distance
+			threshold = 100, //требуемое минимальное пройденное расстояние, чтобы считаться свайпом
+			restraint = 100, // максимальное расстояние, разрешенное одновременно в перпендикулярном направлении
+			allowedTime = 300, // максимальное время, разрешенное для преодоления этого расстояния
 			elapsedTime,
 			startTime,
 			handleswipe = callback || function(swipedir){}
