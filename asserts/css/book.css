@@ -391,6 +391,8 @@ input#find {
     outline: none;
     font-size: 18px;
     color: #444;
+	box-sizing: border-box;
+	padding: 0 32px 1px 0;
 }
 
 ul.words-list {
@@ -551,4 +553,34 @@ body.set10 .content h2 {
 }
 .content::-webkit-scrollbar-thumb {
 	background-color: #c59960;
+}
+form .input-box {
+	position: relative;
+}
+a.ae {
+    position: absolute;
+    display: block;
+    width: 23px;
+    height: 24px;
+    background: #d59031;
+    text-align: center;
+    top: -2px;
+    right: 0;
+    color: #e8d1a7;
+    border-radius: 5px;
+    cursor: pointer;
+	opacity: 0;
+    transition: all 0.3s ease;
+}
+a.ae:before {
+    content: ' ';
+    border: 10px solid transparent;
+    position: absolute;
+    left: -19px;
+    top: 2px;
+    border-right-color: #d59031;
+}
+.ae:hover, 
+#find:focus+.ae {
+	opacity:1
 }

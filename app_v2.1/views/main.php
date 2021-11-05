@@ -55,7 +55,10 @@
 					<img src="/p/page-bg-2.jpg" style="width: 100%; height: 100%;">
 					<div class='content'>
 						<form>
-							<input id='find' autocomplete='off' placeholder='Ныхас ам фыссут' spellcheck='false'>
+							<div class='input-box'>
+								<input id='find' autocomplete='off' placeholder='Ныхас ам фыссут' spellcheck='false'>
+								<a class='ae'><span>ӕ</span></a>
+							</div>
 							<p class='p1'>Дзырдуаты ис ныхӕсттӕ агурын. Уӕ ныхас ам ныффыссут ӕмӕ фендзыстут ныхӕстты ранымад. Дамгъӕ 'ӕ'-йы бӕстӕ, фыссут 'ае'.</p>
 							<p class='p2' style='display:none;'>Ахӕм ныхас дзырдуаты нӕ разынд.</p>
 						</form>

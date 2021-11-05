@@ -253,6 +253,22 @@ function loadApp() {
 				$("#find").focus()
 			}, 1300)
 		})
+		
+		$(".ae").click(function(){
+			if ($.ztimeout) {
+				clearTimeout($.ztimeout)
+			}
+			var find = $("#find")
+			var text = find.val()
+			var selStart = find[0].selectionStart
+			var ae = $(this).find('span').text()
+			if (selStart == 0) {
+				ae = ae.toUpperCase()
+			}
+			find.val( text.slice(0, selStart) + ae + text.slice(selStart) )
+			find.focus().keyup();
+			return false
+		})
 	})
 	
 	// Подключаем звук перелистывания страницы
