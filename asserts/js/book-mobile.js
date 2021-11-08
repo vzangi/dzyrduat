@@ -221,6 +221,7 @@
 		}
 	
 		swipedetect($("body")[0], function(swipedir){
+			if ($(".wrapper").hasClass('find-focused')) return
 			if (swipedir =='left') nextPage()
 			if (swipedir =='right') prevPage()
 		})

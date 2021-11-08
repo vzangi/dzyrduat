@@ -55,6 +55,7 @@ class Word
 	/* Ищет слова в базе по строке поиска */
 	public function findWords($find) 
 	{
+		$find = $this->replaseAE($find);
 		if (!$this->validateFind($find)) {
 			return [];
 		}
@@ -117,6 +118,7 @@ class Word
 	/* Поиск слова */
 	public function getWord($word) 
 	{
+		$word = $this->replaseAE($word);
 		if (!$this->validateFind($word)) {
 			return null;
 		}
@@ -131,10 +133,10 @@ class Word
 	/* Добавление слова в базу */
 	public function insertWord($data) 
 	{
-		$word = $data['word'];
+		$word = $this->replaseAE($data['word']);
 		$translit = $data['translit'];
 		$user_id = $data['user_id'];
-		$description = $data['description'];
+		$description = $this->replaseAE($data['description']);
 		$translates = $data['translates'];
 		
 		if (!$this->validateFind($word)) {
@@ -176,6 +178,7 @@ class Word
 			$ex_sort = 10;
 			if (isset($translate['examples']) && count($translate['examples']) > 0) {
 				foreach($translate['examples'] AS $example) {
+					$example = $this->replaseAE($example);
 					$query = "INSERT INTO examples (translate_id, example, sort)
 							VALUES ($translate_id, '$example', $ex_sort)";
 					$this->db->insert($query);
@@ -192,6 +195,8 @@ class Word
 	/* Изменение слова в базе */
 	public function chageWord($item, $r_translates, $r_words, $r_examples) 
 	{
+		$item['word'] = $this->replaseAE($item['word']);
+		$item['description'] = $this->replaseAE($item['description']);
 		$query = "UPDATE nyhas SET 
 					word = '{$item['word']}',
 					translit = '{$item['translit']}',
@@ -243,6 +248,7 @@ class Word
 								WHERE id = {$example['id']}";
 					$this->db->query($query);
 				} else {
+					$example['value'] = $this->replaseAE($example['value']);
 					$query = "INSERT examples (translate_id, example, sort)
 								VALUES ({$tid}, '{$example['value']}', {$example['sort']})";
 					$this->db->insert($query);
@@ -326,5 +332,18 @@ class Word
 	protected function validateId($id) 
 	{
 		return is_numeric($id);
+	}
+	
+	/* Замена буквы ае из мобильника на ае для базы */
+	private function replaseAE($word) {
+		$standart_ae = 'ӕ';
+		$standart_Ae = 'Ӕ';
+		$mobile_ae = 'æ';
+		$mobile_Ae = 'Æ';
+		
+		$word = str_replace($mobile_ae, $standart_ae, $word);
+		$word = str_replace($mobile_Ae, $standart_Ae, $word);
+		
+		return $word;
 	}
 }
