@@ -323,7 +323,7 @@ $('body').on('keyup', '#find', function(e){
 							translate = ' - ' + word['translate']
 						}
 						$("<li><a onclick='goToPage("+(1*word['page'] + 2) +")'>"+word['word']+"</a>" + translate
-							+"<span>"+word['page']+" сыф</span></li>").appendTo(".words-list")
+							+"<span onclick='goToPage("+(1*word['page'] + 2) +")'>"+word['page']+" сыф</span></li>").appendTo(".words-list")
 					})
 				}
 			}
@@ -376,6 +376,6 @@ yepnope({
 	test: Modernizr.csstransforms,
 	yep:  ['js/lib/turn.min.js'],
 	nope: ['js/lib/turn.html4.min.js'],
-	both: ['js/lib/zoom.min.js', 'js/book.js', 'css/book.css'],
+	both: ['js/lib/zoom.min.js', 'js/book.js', 'css/book.css?v=3'],
 	complete: loadApp
 })

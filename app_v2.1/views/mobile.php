@@ -56,6 +56,6 @@
 			</div>
 			<div id='pages' style='display:none;' data-current_page='0' data-page_count='<?=$page_count + $page_count % 2?>'></div>
 		</div>
-		<script src='/js/book-mobile.js?v=2.2'></script>
+		<script src='/js/book-mobile.js?v=3'></script>
 	</body>
 </html>

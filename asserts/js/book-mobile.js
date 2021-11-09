@@ -31,7 +31,7 @@
 							translate = ' - ' + word['translate']
 						}
 						$("<li><a onclick='goToPage("+(1*word['page']) +")'>"+word['word']+"</a>" + translate
-							+"<span>"+word['page']+" сыф</span></li>").appendTo(".finded-words")
+							+"<span onclick='goToPage("+(1*word['page']) +")'>"+word['page']+" сыф</span></li>").appendTo(".finded-words")
 					})
 				}
 			})

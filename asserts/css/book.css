@@ -417,6 +417,7 @@ ul.words-list li span {
     font-size: 14px;
     bottom: 1px;
     color: #555;
+	cursor: pointer;
 }
 audio {
 	display: none !important;
