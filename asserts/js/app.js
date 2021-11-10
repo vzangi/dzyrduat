@@ -376,6 +376,6 @@ yepnope({
 	test: Modernizr.csstransforms,
 	yep:  ['js/lib/turn.min.js'],
 	nope: ['js/lib/turn.html4.min.js'],
-	both: ['js/lib/zoom.min.js', 'js/book.js', 'css/book.css?v=3'],
+	both: ['js/lib/zoom.min.js', 'js/book.js', 'css/book.css?v=4'],
 	complete: loadApp
 })

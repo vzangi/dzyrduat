@@ -580,8 +580,15 @@ a.ae:before {
     left: -19px;
     top: 2px;
     border-right-color: #d59031;
+	transition: all 0.3s ease;
 }
 .ae:hover, 
 #find:focus+.ae {
 	opacity:1
+}
+a.ae:hover {
+    background: #976a2d;
+}
+.ae:hover::before {
+    border-right-color: #976a2d;
 }
