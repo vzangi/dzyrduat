@@ -75,6 +75,6 @@
 <div class='search-icon'>
 	<div class='pic' title='Ныхас агурын'></div>
 </div>
-<script type="text/javascript" src="js/app.js?v=3"></script>
+<script type="text/javascript" src="js/app.js?v=4"></script>
 </body>
 </html>

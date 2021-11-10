@@ -254,7 +254,7 @@ function loadApp() {
 			}, 1300)
 		})
 		
-		$(".ae").click(function(){
+		$('body').on('click', '.ae', function(){
 			if ($.ztimeout) {
 				clearTimeout($.ztimeout)
 			}
