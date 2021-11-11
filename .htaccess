@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RewriteCond %{ENV:HTTPS} !on
+RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RedirectMatch 404 /\.git
 RewriteRule ^p/(.*)$ /asserts/pictures/$1 [NC,L]
 RewriteRule ^css/(.*)$ /asserts/css/$1 [NC,L]
