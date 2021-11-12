@@ -1,6 +1,5 @@
 <div>
 <?php
-//print_r($_SERVER['DOCUMENT_ROOT']);
 function mb_ucfirst($str, $encoding='UTF-8')
 {
 	$str = mb_ereg_replace('^[\ ]+', '', $str);

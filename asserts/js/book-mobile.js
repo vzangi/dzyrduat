@@ -16,6 +16,16 @@
 			}, 350)
 		})
 		
+		window.onpopstate = function(event) {
+			if (!event.state) {
+				goToFirst()
+				return
+			}
+			// ставим индикатор нажатия перехода по истории
+			$.pushing = true;
+			goToPage(1*event.state.page)
+		}
+		
 		function getWords(word) {
 			if (word == '')	{
 				$(".finded-words").empty()
@@ -81,16 +91,20 @@
 			var cur_page = $("#pages").data().current_page*1
 			if (cur_page == 0) return
 			if (cur_page == 1) {
-				playZvuk();
-				var w = $(document).width()
-				$(".viewer").addClass('old').css("left", w)
-				setTimeout(function(){
-					$("#pages").data().current_page = 0;
-					$(".viewer.old").remove()
-				}, 400)
+				goToFirst()
 				return
 			}
 			goToPage(cur_page - 1)
+		}
+		
+		function goToFirst(){
+			playZvuk();
+			var w = $(document).width()
+			$(".viewer").addClass('old').css("left", w)
+			setTimeout(function(){
+				$("#pages").data().current_page = 0;
+				$(".viewer.old").remove()
+			}, 400)
 		}
 		
 		window.goToPage = function(page) {
@@ -119,6 +133,14 @@
 			
 			$(".wrapper").append( viewer )
 			
+			// Если событие перелыстывание вызывано не кнопкой возврата
+			// то добавляем страницу в историю
+			if (!$.pushing) {
+				history.pushState({page: page}, "")
+			}
+			// очищаем индикатор 
+			$.pushing = false;
+			
 			setTimeout(function(){
 				playZvuk();
 				viewer.css("left", 0);
@@ -137,6 +159,8 @@
 				}
 			}, 10)
 		}
+		
+		
 		
 		$('body').on('click', 'ol li a', function(){
 			var word = $(this).attr('href')

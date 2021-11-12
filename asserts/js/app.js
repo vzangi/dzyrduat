@@ -13,6 +13,18 @@ function loadApp() {
 		return
 	}
 	
+	window.onpopstate = function(event) {
+		if (!event.state) {
+			$.pushing = true;
+			goToPage(1)
+			return
+		}
+		var page = 1*event.state.page
+		// ставим индикатор нажатия перехода по истории
+		$.pushing = true;
+		goToPage(page)
+	}
+	
 	var page_count = flipbook.data().page_count + 4
 	
 	// Создаем книгу
@@ -65,8 +77,15 @@ function loadApp() {
 					}
 				}, 10)
 		
-				// Show and hide navigation buttons
+				// Если событие перелыстывание вызывано не кнопкой возврата
+				// то добавляем страницу в историю
+				if (!$.pushing) {
+					history.pushState({page: page}, "")
+				}
+				// очищаем индикатор 
+				$.pushing = false;
 
+				// Скрываем навигационные кнопки
 				disableControls(page)
 			},
 
