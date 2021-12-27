@@ -63,59 +63,71 @@ class Word
 		
 		$query = "SELECT word, page 
 					FROM nyhas 
-					WHERE word LIKE '{$find}%' OR description LIKE '%{$find}%'
+					WHERE word LIKE '{$find}%' 
 					ORDER BY page 
 					LIMIT 0, $limit";
 		
 		$words = $this->db->query($query);
 		if (count($words) > 0) {
 			return $words;
-		} else {
-			// Поиск в переводах
-			$query = "SELECT nyhas.word, nyhas.page, translate_words.translate 
-						FROM translate_words 
-							LEFT JOIN
-							 translates
-							ON translates.id = translate_words.translate_id
-							LEFT JOIN 
-							 nyhas
-							ON nyhas.id = translates.nyhas_id
-						WHERE translate LIKE '$find%'
-						GROUP BY nyhas.word
-						ORDER BY nyhas.page
-						LIMIT 0, $limit";
+		} 
 			
-			$words = $this->db->query($query);
-			if (count($words) > 0) {
-				return $words;
-			}
-
-			// Поиск в примерах
-			// идёт по началу слов в примере
-			$query = "SELECT nyhas.word, nyhas.page, translate_words.translate 
-						FROM examples 
-							LEFT JOIN 
-								translates
-							ON translates.id = examples.translate_id
-							LEFT JOIN
-								nyhas
-							ON nyhas.id = translates.nyhas_id
-							LEFT JOIN 
-								translate_words
-							ON translates.id = translate_words.translate_id
-						WHERE example LIKE '% $find%' OR example LIKE '$find%'
-						GROUP BY nyhas.word
-						ORDER BY nyhas.page
-						LIMIT 0, $limit";
-			
-			$words = $this->db->query($query);
-			if (count($words) > 0) {
-				return $words;
-			}
-			// Если простой поиск не нашёл совпадений, 
-			// то можно попробовать поиск близких по написанию слов
-			// Алгоритм надо придумать...
+		// Поиск в переводах
+		$query = "SELECT nyhas.word, nyhas.page, translate_words.translate 
+					FROM translate_words 
+						LEFT JOIN
+						 translates
+						ON translates.id = translate_words.translate_id
+						LEFT JOIN 
+						 nyhas
+						ON nyhas.id = translates.nyhas_id
+					WHERE translate LIKE '$find%'
+					GROUP BY nyhas.word
+					ORDER BY nyhas.page
+					LIMIT 0, $limit";
+		
+		$words = $this->db->query($query);
+		if (count($words) > 0) {
+			return $words;
+		} 
+				
+		// Поиск в описании к слову
+		$query = "SELECT word, page 
+					FROM nyhas 
+					WHERE description LIKE '%{$find}%' 
+					ORDER BY page 
+					LIMIT 0, $limit";
+		$words = $this->db->query($query);
+		if (count($words) > 0) {
+			return $words;
 		}
+				
+		// Поиск в примерах
+		// идёт по началу слов в примере
+		$query = "SELECT nyhas.word, nyhas.page, translate_words.translate 
+					FROM examples 
+						LEFT JOIN 
+							translates
+						ON translates.id = examples.translate_id
+						LEFT JOIN
+							nyhas
+						ON nyhas.id = translates.nyhas_id
+						LEFT JOIN 
+							translate_words
+						ON translates.id = translate_words.translate_id
+					WHERE example LIKE '% $find%' OR example LIKE '$find%'
+					GROUP BY nyhas.word
+					ORDER BY nyhas.page
+					LIMIT 0, $limit";
+		
+		$words = $this->db->query($query);
+		if (count($words) > 0) {
+			return $words;
+		}
+		// Если простой поиск не нашёл совпадений, 
+		// то можно попробовать поиск близких по написанию слов
+		// Алгоритм надо придумать...
+		
 		return [];
 	}
 	
