@@ -117,7 +117,7 @@ class Word
 		// Поиск в описании к слову
 		$query = "SELECT word, page 
 					FROM nyhas 
-					WHERE description LIKE '{$find}%' OR description LIKE ' {$find}%'
+					WHERE description LIKE '{$find}%' OR description LIKE '% {$find}%'
 					ORDER BY page 
 					LIMIT 0, $limit";
 		$words = $this->db->query($query);
