@@ -61,7 +61,11 @@ class Word
 		}
 		$limit = Config::getInstance()->get('find_item_count');
 		
-		$query = "SELECT word, page FROM nyhas WHERE word LIKE '{$find}%' ORDER BY page LIMIT 0, $limit";
+		$query = "SELECT word, page 
+					FROM nyhas 
+					WHERE word LIKE '{$find}%' OR description LIKE '%{$find}%'
+					ORDER BY page 
+					LIMIT 0, $limit";
 		
 		$words = $this->db->query($query);
 		if (count($words) > 0) {
