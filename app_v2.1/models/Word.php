@@ -91,17 +91,6 @@ class Word
 			return $words;
 		} 
 				
-		// Поиск в описании к слову
-		$query = "SELECT word, page 
-					FROM nyhas 
-					WHERE description LIKE '%{$find}%' 
-					ORDER BY page 
-					LIMIT 0, $limit";
-		$words = $this->db->query($query);
-		if (count($words) > 0) {
-			return $words;
-		}
-				
 		// Поиск в примерах
 		// идёт по началу слов в примере
 		$query = "SELECT nyhas.word, nyhas.page, translate_words.translate 
@@ -124,6 +113,18 @@ class Word
 		if (count($words) > 0) {
 			return $words;
 		}
+				
+		// Поиск в описании к слову
+		$query = "SELECT word, page 
+					FROM nyhas 
+					WHERE description LIKE '{$find}%' OR description LIKE ' {$find}%'
+					ORDER BY page 
+					LIMIT 0, $limit";
+		$words = $this->db->query($query);
+		if (count($words) > 0) {
+			return $words;
+		}
+		
 		// Если простой поиск не нашёл совпадений, 
 		// то можно попробовать поиск близких по написанию слов
 		// Алгоритм надо придумать...
