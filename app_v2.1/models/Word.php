@@ -157,7 +157,6 @@ class Word
 		$translates = $data['translates'];
 		
 		if (!$this->validateFind($word)) {
-			echo 123;
 			return false;
 		}
 		
