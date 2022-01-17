@@ -157,6 +157,7 @@ class Word
 		$translates = $data['translates'];
 		
 		if (!$this->validateFind($word)) {
+			echo 123;
 			return false;
 		}
 		
@@ -338,7 +339,9 @@ class Word
 	/* Валидация поисковой строки */
 	protected function validateFind($find) 
 	{
-		if (strlen($find) > self::FIND_WORD_MAX_LENGTH) return false;
+		if (mb_strlen($find) > self::FIND_WORD_MAX_LENGTH) {	
+			return false;
+		}
 		if (!preg_match("/^[ӕабвгдеёжзийклмнопрстуфхцчшщъыьэюяÆАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ\s]+[-]{0,1}[ӕабвгдеёжзийклмнопрстуфхцчшщъыьэюяÆАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ\s]*$/i", $find)) {
 			return false;
 		}
