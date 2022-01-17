@@ -6,7 +6,7 @@ class Word
 {
     protected $db;
 	
-	const FIND_WORD_MAX_LENGTH = 25;
+	const FIND_WORD_MAX_LENGTH = 32;
 	
 	public function __construct(){
 		$this->db = DB::getInstance();
