@@ -16,12 +16,13 @@ class SitemapMaker
 		$data = $data.'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
 		$data = $data."\r\n";
 		$data = $data.$this->url("$site/", $date, "1.0");
-		$data = $data."</urlset>\r\n";
 		
 		foreach($words as $word) {
 			$data = $data.$this->url("$site/".$word['word'], $date, "1.0");
 		}
-
+		
+		$data = $data."</urlset>\r\n";
+		
 		file_put_contents( "sitemap.xml", $data );
 	}
 	
