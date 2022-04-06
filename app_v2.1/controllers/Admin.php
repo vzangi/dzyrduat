@@ -63,6 +63,8 @@ class Admin extends PageController
 			
 			$word = new Word;
 			if ($word->insertWord($data)) {
+				$sitemap = new SitemapMaker;
+				$sitemap->makeSitemap();
 				return 'ok';
 			} else {
 				return 'error';

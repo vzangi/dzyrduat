@@ -14,7 +14,7 @@ class Application
     {
 		$this->request = new Request();
         $this->defaultController = "".Config::getInstance()->get('default_controller');
-		$this->whiteList = ['main', 'find', 'page', 'admin'];
+		$this->whiteList = ['main', 'find', 'page', 'admin', 'sitemap'];
     }
 
 	/* Запуск приложения */

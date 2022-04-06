@@ -20,6 +20,13 @@ class Word
 		return $count[0]['cnt'];
 	}
 	
+	/* Получить все слова из базы */
+	public function getAll() {
+		$query = "SELECT word FROM nyhas";
+		$words = $this->db->query($query);
+		return $words;
+	}
+	
 	/* Поиск слова по номеру страницы */
 	public function getWordByPage($page) 
 	{
