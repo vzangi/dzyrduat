@@ -146,7 +146,7 @@ class Word
 		if (!$this->validateFind($word)) {
 			return null;
 		}
-		$query = "SELECT word, page, image, sound FROM nyhas WHERE word = '$word'";
+		$query = "SELECT id, word, page, image, sound FROM nyhas WHERE word = '$word'";
 		$words = $this->db->query($query);
 		if (count($words) == 1) {
 			return $words[0];
